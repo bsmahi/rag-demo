@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Knowledge Base Architecture</title>
+  <desc id="desc">Architecture diagram showing browser, Java app, Bedrock Knowledge Base, S3 document bucket, S3 vectors bucket and embedding model.</desc>
+  <defs>
+    <style>
+      .title { font: 700 26px Arial, sans-serif; fill: #1f2937; }
+      .label { font: 600 20px Arial, sans-serif; fill: #111827; }
+      .small { font: 500 16px Arial, sans-serif; fill: #374151; }
+      .box { fill: #f8fafc; stroke: #475569; stroke-width: 2; rx: 18; }
+      .accent { fill: #dbeafe; stroke: #2563eb; stroke-width: 2; rx: 18; }
+      .purple { fill: #ede9fe; stroke: #7c3aed; stroke-width: 2; rx: 18; }
+      .green { fill: #dcfce7; stroke: #16a34a; stroke-width: 2; rx: 18; }
+      .orange { fill: #ffedd5; stroke: #ea580c; stroke-width: 2; rx: 18; }
+      .arrow { stroke: #475569; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .dashed { stroke-dasharray: 8 8; }
+      .node { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; rx: 12; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#ffffff"/>
+
+  <text x="600" y="52" text-anchor="middle" class="title">Amazon Bedrock Knowledge Base Demo</text>
+
+  <!-- User / Browser -->
+  <rect x="65" y="120" width="210" height="170" class="accent"/>
+  <text x="170" y="168" text-anchor="middle" class="label">User Browser</text>
+  <text x="170" y="205" text-anchor="middle" class="small">index.html</text>
+  <text x="170" y="235" text-anchor="middle" class="small">Sends chat prompt</text>
+  <text x="170" y="263" text-anchor="middle" class="small">to localhost:8080/chat</text>
+
+  <!-- Java App -->
+  <rect x="390" y="120" width="260" height="170" class="purple"/>
+  <text x="520" y="168" text-anchor="middle" class="label">Spring AI App</text>
+  <text x="520" y="205" text-anchor="middle" class="small">kbAgent.java</text>
+  <text x="520" y="235" text-anchor="middle" class="small">REST API /chat</text>
+  <text x="520" y="263" text-anchor="middle" class="small">QuestionAnswerAdvisor</text>
+
+  <!-- Knowledge Base -->
+  <rect x="760" y="120" width="300" height="170" class="green"/>
+  <text x="910" y="168" text-anchor="middle" class="label">Amazon Bedrock</text>
+  <text x="910" y="205" text-anchor="middle" class="small">Knowledge Base</text>
+  <text x="910" y="235" text-anchor="middle" class="small">S3 Vectors + metadata</text>
+  <text x="910" y="263" text-anchor="middle" class="small">RAG answer generation</text>
+
+  <!-- S3 Docs -->
+  <rect x="140" y="410" width="290" height="170" class="orange"/>
+  <text x="285" y="458" text-anchor="middle" class="label">S3 Document Bucket</text>
+  <text x="285" y="495" text-anchor="middle" class="small">Uploaded PDFs / TXT / MD</text>
+  <text x="285" y="525" text-anchor="middle" class="small">source documents</text>
+  <text x="285" y="555" text-anchor="middle" class="small">for ingestion</text>
+
+  <!-- Vector storage -->
+  <rect x="510" y="410" width="320" height="170" class="box"/>
+  <text x="670" y="458" text-anchor="middle" class="label">S3 Vector Bucket + Index</text>
+  <text x="670" y="495" text-anchor="middle" class="small">Embeddings</text>
+  <text x="670" y="525" text-anchor="middle" class="small">float32 vectors</text>
+  <text x="670" y="555" text-anchor="middle" class="small">cosine similarity search</text>
+
+  <!-- model -->
+  <rect x="900" y="410" width="210" height="170" class="node"/>
+  <text x="1005" y="458" text-anchor="middle" class="label">Embedding Model</text>
+  <text x="1005" y="495" text-anchor="middle" class="small">amazon.titan-embed-text-v2:0</text>
+  <text x="1005" y="525" text-anchor="middle" class="small">creates vectors</text>
+  <text x="1005" y="555" text-anchor="middle" class="small">for semantic search</text>
+
+  <!-- arrows -->
+  <path d="M275 205 L390 205" class="arrow"/>
+  <path d="M650 205 L760 205" class="arrow"/>
+  <path d="M520 290 L520 350 L285 350 L285 410" class="arrow dashed"/>
+  <path d="M520 290 L520 350 L670 350 L670 410" class="arrow dashed"/>
+  <path d="M910 290 L910 350 L1005 350 L1005 410" class="arrow dashed"/>
+
+  <path d="M430 410 L430 332 L640 332 L640 410" class="arrow"/>
+  <text x="600" y="318" text-anchor="middle" class="small">ingest + chunk + embed</text>
+
+  <!-- bottom note -->
+  <text x="600" y="640" text-anchor="middle" class="small">Local docs are uploaded to S3, indexed into S3 Vectors, and queried by the app using a Bedrock-backed RAG workflow.</text>
+</svg>
