@@ -6,7 +6,9 @@ set -euo pipefail
 # Configuration
 # ============================================================
 
-LOCAL_DIR="/Users/mahendrarao/Documents/rag-demo"
+# Use the directory containing this script so documents are loaded from rag-demo
+# regardless of the caller's current working directory.
+LOCAL_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 REGION="us-east-1"
 
