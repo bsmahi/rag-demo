@@ -1,8 +1,8 @@
 /// usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS org.springframework.boot:spring-boot-starter-web:4.0.1
-//DEPS org.springframework.ai:spring-ai-starter-model-bedrock-converse:2.0.0-M2
-//DEPS org.springframework.ai:spring-ai-starter-vector-store-bedrock-knowledgebase:2.0.0-M2
-//DEPS org.springframework.ai:spring-ai-advisors-vector-store:2.0.0-M2
+//DEPS org.springframework.boot:spring-boot-starter-web:4.1.1
+//DEPS org.springframework.ai:spring-ai-starter-model-bedrock-converse:2.0.0
+//DEPS org.springframework.ai:spring-ai-starter-vector-store-bedrock-knowledgebase:2.0.0
+//DEPS org.springframework.ai:spring-ai-advisors-vector-store:2.0.0
 
 //JAVA_OPTIONS -Dspring.ai.bedrock.aws.region=us-east-1
 //JAVA_OPTIONS -Dspring.ai.bedrock.converse.chat.options.model=us.amazon.nova-lite-v1:0
