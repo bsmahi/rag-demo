@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 @RestController
-public class KbAgent {
+public class KnowledgeAgent {
 
     private final ChatClient chatClient;
 
@@ -38,6 +38,6 @@ public class KbAgent {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(KbAgent.class, args);
+        SpringApplication.run(KnowledgeAgent.class, args);
     }
 }
