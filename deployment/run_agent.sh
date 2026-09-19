@@ -16,4 +16,4 @@ fi
 echo "KB: ${KB_ID}"
 
 # Run the JBang script with the retrieved ID
-SPRING_AI_VECTORSTORE_BEDROCK_KNOWLEDGE_BASE_KNOWLEDGE_BASE_ID="${KB_ID}" jbang KbAgent.java
+SPRING_AI_VECTORSTORE_BEDROCK_KNOWLEDGE_BASE_KNOWLEDGE_BASE_ID="${KB_ID}" jbang ../KnowledgeAgent.java

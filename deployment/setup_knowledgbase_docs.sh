@@ -8,7 +8,8 @@ set -euo pipefail
 
 # Use the directory containing this script so documents are loaded from rag-demo
 # regardless of the caller's current working directory.
-LOCAL_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+LOCAL_DIR="$(dirname "${SCRIPT_DIR}")"
 
 REGION="us-east-1"
 
@@ -88,11 +89,13 @@ echo "  Embedding Model     : ${EMBEDDING_MODEL_ID}"
 
 log "Step 1: Validating local document directory"
 
-if [[ ! -d "${LOCAL_DIR}" ]]; then
-    error "Local directory does not exist: ${LOCAL_DIR}"
+LOCAL_DOCS_DIR="${LOCAL_DIR}/docs"
+
+if [[ ! -d "${LOCAL_DOCS_DIR}" ]]; then
+    error "Local document directory does not exist: ${LOCAL_DOCS_DIR}"
 fi
 
-cd "${LOCAL_DIR}"
+cd "${LOCAL_DOCS_DIR}"
 
 # ============================================================
 # Step 2: Create S3 bucket
@@ -163,7 +166,7 @@ for file in *; do
 done
 
 if [[ "${FOUND_DOCUMENTS}" == false ]]; then
-    error "No supported documents found in ${LOCAL_DIR}"
+    error "No supported documents found in ${LOCAL_DOCS_DIR}"
 fi
 
 echo
