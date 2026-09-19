@@ -22,7 +22,7 @@ public class KnowledgeAgent {
 
     private final ChatClient chatClient;
 
-    public KbAgent(ChatClient.Builder builder, VectorStore vectorStore) {
+    public KnowledgeAgent(ChatClient.Builder builder, VectorStore vectorStore) {
         this.chatClient = builder
                 .defaultAdvisors(QuestionAnswerAdvisor.builder(vectorStore).build())
                 .build();
