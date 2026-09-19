@@ -1,1 +1,1 @@
-For Step by Step Guide click [here](AGENT.md)
+For Step by Step Guide click [here](AGENTS.md)
