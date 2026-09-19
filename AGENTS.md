@@ -7,7 +7,7 @@ This repository is a minimal Amazon Bedrock Knowledge Base demo. It loads docume
 - `setup_knowledgbase_docs.sh` — full end-to-end setup for provisioning AWS resources and ingesting local docs.
 - `setup_kb.sh` — older/alternate sample setup script for a smaller demo.
 - `run_agent.sh` — resolves the Knowledge Base ID for `kb-demo` and starts the Java app.
-- `kbAgent.java` — Spring Boot + Spring AI app exposing `POST /chat`.
+- `KnowledgeAgent.java` — Spring Boot + Spring AI app exposing `POST /chat`.
 - `index.html` — simple browser UI that calls the local `/chat` endpoint.
 - PDF and text documents in the repo root are examples that can be uploaded to the knowledge base.
 
@@ -99,7 +99,7 @@ Important: `run_agent.sh` looks up the Bedrock Knowledge Base by the literal nam
    ```
    This resolves the Knowledge Base ID and runs:
    ```bash
-   jbang KbAgent.java
+   jbang KnowledgeAgent.java
    ```
 
 ## Local app behavior
@@ -136,7 +136,7 @@ This architecture follows a simple RAG flow:
 ```bash
 bash -n setup_knowledgbase_docs.sh
 bash -n run_agent.sh
-jbang KbAgent.java
+jbang KnowledgeAgent.java
 ```
 
 When the app is running, verify the endpoint with:
